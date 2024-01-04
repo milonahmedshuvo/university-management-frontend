@@ -30,10 +30,17 @@ const Form = ({ children, submitHandler, defaultValues }: FormProps) => {
 
   const { handleSubmit, reset } = methods;
 
+
+
+
   const onSubmit = (data: any) => {
     submitHandler(data);
     reset();
   };
+
+
+
+  
 
   return (
     <FormProvider {...methods}>
