@@ -1,46 +1,58 @@
-import { Input } from "antd"
-import { useFormContext, Controller } from "react-hook-form"
+import { Input } from "antd";
+import { useFormContext, Controller } from "react-hook-form";
 
-
-// type defiend 
+// type defiend
 interface IInput {
-    name: string,
-    type?: string,
-    size?: "large" | "small",
-    value?: string | string[] | undefined,
-    id?: string,
-    placeholder?: string,
-    validation?: object,
-    label?: string
+  name: string;
+  type?: string;
+  size?: "large" | "small";
+  value?: string | string[] | undefined;
+  id?: string;
+  placeholder?: string;
+  validation?: object;
+  label?: string;
 }
 
-
-
-
-const FormInput = (  {name, type, size, value, id, placeholder, validation, label}: IInput ) => {
-
-const { control } = useFormContext()
-
-
-
-
+const FormInput = ({
+  name,
+  type,
+  size,
+  value,
+  id,
+  placeholder,
+  validation,
+  label,
+}: IInput) => {
+  const { control } = useFormContext();
 
   return (
     <>
-    {label ? label : null }
-    <Controller
+      {label ? label : null}
+      <Controller
         control={control}
         name={name}
-        render={({ field }) => <Input
-               {...field} 
-               type={type}
-               size={size}
-               placeholder={placeholder}
-               value={value ? value : field.value}
-        /> }
+        render={({ field }) =>
+          type === "password" ? (
+            <Input.Password
+              {...field}
+              type={type}
+              size={size}
+              placeholder={placeholder}
+              value={value ? value : field.value}
+            />
+          ) : (
+            <Input
+              {...field}
+              type={type}
+              size={size}
+              placeholder={placeholder}
+              value={value ? value : field.value}
+            />
+          )
+        }
       />
     </>
-  )
-}
+  );
+};
 
-export default FormInput
+export default FormInput;
