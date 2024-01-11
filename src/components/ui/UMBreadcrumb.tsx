@@ -26,4 +26,6 @@ const UMBreadcrumb = ({items}: {items : {label: string, link: string}[] }) => {
     return <Breadcrumb items={breadcrumbItems} > </Breadcrumb>
 }
 
-export default UMBreadcrumb
+export default UMBreadcrumb;
+
+
